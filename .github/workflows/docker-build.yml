@@ -1,6 +1,9 @@
 name: Build and Push Docker Image
 
+
 on:
+  schedule:
+    - cron: '0 0 1 * *'  # This runs at midnight on the first day of every month
   push:
     branches:
       - main
@@ -20,8 +23,11 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
 
     - name: Build the Docker image
-      run: docker build . -t k2patel/postfix:latest
+      id: build
+      run: |
+        docker build . -t k2patel/postfix:latest
+        echo "IMAGE_NAME=k2patel/postfix:latest" >> $GITHUB_ENV
 
     - name: Push the Docker image
-      run: docker push k2patel/postfix
+      run: docker push ${{ env.IMAGE_NAME }}
 

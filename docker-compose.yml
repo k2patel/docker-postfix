@@ -1,0 +1,19 @@
+services:
+  postfix:
+    container_name: postfix
+    image: docker.io/k2patel/postfix:latest
+    ports:
+      - "10825:25/tcp"
+    environment:
+      TIMEZONE: ${TIMEZONE}
+      SMTP_SERVER: ${SMTP_SERVER}
+      SERVER_HOSTNAME: ${SERVER_HOSTNAME}
+      SMTP_PORT: ${SMTP_PORT}
+      DOMAIN: ${DOMAIN}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+    volumes:
+      - "${DATA_FOLDER}/logs:/var/log"
+      - "${DATA_FOLDER}/mail:/var/mail"
+      - "${DATA_FOLDER}/spool:/var/spool/postfix"
+    restart: unless-stopped
