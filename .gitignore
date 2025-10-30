@@ -1,0 +1,46 @@
+# Environment files with credentials
+.env
+.env.local
+.env.*.local
+
+# Data directories
+data/
+logs/
+mail/
+spool/
+
+# Docker volumes
+/var/log/
+/var/mail/
+/var/spool/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS files
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Postfix specific
+sasl_passwd
+sasl_passwd.db
+header_tag
+
+# Build artifacts
+*.log
