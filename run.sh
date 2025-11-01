@@ -129,7 +129,7 @@ if [ "${SMTP_PROVIDER}" == "sendgrid" ] || [ "${SMTP_PROVIDER}" == "mailtrap" ] 
     add_config_value "smtp_use_tls" "yes"
     add_config_value "smtp_tls_security_level" "encrypt"
     add_config_value "smtp_tls_CAfile" "/etc/ssl/certs/ca-certificates.crt"
-    add_config_value "smtp_tls_session_cache_database" "btree:\${data_directory}/smtp_scache"
+    add_config_value "smtp_tls_session_cache_database" "lmdb:\${data_directory}/smtp_scache"
     add_config_value "smtp_tls_loglevel" "1"
 else
     add_config_value "smtp_tls_security_level" "may"
